@@ -2,12 +2,7 @@ use anyhow::{anyhow, Result};
 use serde::{Deserialize, Serialize};
 use serde_json::{from_value, Value};
 
-use crate::{Steam, BASE_URL};
-
-const INTERFACE: &str = "ISteamUser";
-const METHOD: &str = "GetPlayerSummaries";
-const VERSION: &str = "v2";
-
+use crate::{generics::{INTERFACE, VERSION, METHOD, BASE_URL}, Steam};
 
 // player profile object returned by api
 #[derive(Serialize, Deserialize, Debug, Clone)]

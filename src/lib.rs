@@ -1,7 +1,6 @@
 
+mod generics;
 pub mod actions;
-
-const BASE_URL: &str = "https://api.steampowered.com";
 
 pub struct Steam {
     api_key: String
