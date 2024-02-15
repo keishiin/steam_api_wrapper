@@ -2,7 +2,10 @@ use anyhow::{anyhow, Result};
 use serde::{Deserialize, Serialize};
 use serde_json::{from_value, Value};
 
-use crate::{generics::{INTERFACE, VERSION, METHOD, BASE_URL}, Steam};
+use crate::{
+    generics::{BASE_URL, GET_PLAYER_SUMMARIES, ISTEAM_USER, VERSION_V2},
+    Steam,
+};
 
 // player profile object returned by api
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -20,7 +23,7 @@ pub struct Player {
     pub persona_name: String,
 
     #[serde(rename = "lastlogoff")]
-    pub last_logoff:  Option<u64>,
+    pub last_logoff: Option<u64>,
 
     #[serde(rename = "commentpermission")]
     pub comment_permission: Option<u8>,
@@ -41,16 +44,16 @@ pub struct Player {
     pub avatar_full: String,
 
     #[serde(rename = "personastate")]
-    pub persona_state:  Option<u8>,
+    pub persona_state: Option<u8>,
 
     #[serde(rename = "realname")]
-    pub real_name:  Option<String>,
+    pub real_name: Option<String>,
 
     #[serde(rename = "primaryclanid")]
     pub primary_clan_id: String,
 
     #[serde(rename = "timecreated")]
-    pub time_created:  Option<u64>,
+    pub time_created: Option<u64>,
 
     #[serde(rename = "personastateflags")]
     pub persona_state_flags: u8,
@@ -73,18 +76,21 @@ pub struct Player {
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Players {
-    players: Vec<Player>
+    players: Vec<Player>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct PlayerResponse {
-    response: Players
+    response: Players,
 }
 
 impl Steam {
     pub async fn get_player_summaries(&self, steam_id: u64) -> Result<Vec<Player>> {
         let query = format!("?key={}&steamids={}", &self.api_key, steam_id);
-        let url = format!("{}/{}/{}/{}/{}", BASE_URL, INTERFACE, METHOD, VERSION, query);
+        let url = format!(
+            "{}/{}/{}/{}/{}",
+            BASE_URL, ISTEAM_USER, GET_PLAYER_SUMMARIES, VERSION_V2, query
+        );
 
         let resp = reqwest::get(url).await?;
 
@@ -103,9 +109,7 @@ impl Steam {
                 };
                 Ok(response.response.players)
             }
-            status_code => {
-                Err(anyhow!("Expected 200 Status, got {}", status_code))
-            }
+            status_code => Err(anyhow!("Expected 200 Status, got {}", status_code)),
         }
     }
 }

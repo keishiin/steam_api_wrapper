@@ -1,9 +1,8 @@
-
 mod generics;
-pub mod actions;
+pub mod services;
 
 pub struct Steam {
-    api_key: String
+    api_key: String,
 }
 
 impl Steam {
