@@ -1,14 +1,16 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+
+pub mod actions;
+
+const BASE_URL: &str = "https://api.steampowered.com";
+
+pub struct Steam {
+    api_key: String
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+impl Steam {
+    pub fn new(api_key: &str) -> Steam {
+        Steam {
+            api_key: api_key.to_string(),
+        }
     }
 }
