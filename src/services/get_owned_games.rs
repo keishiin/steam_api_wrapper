@@ -7,7 +7,6 @@ use crate::{
     Steam,
 };
 
-
 #[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct OwnedGame {
     #[serde(rename = "appid")]
@@ -26,24 +25,31 @@ pub struct OwnedGame {
 
     pub img_logo_url: Option<String>,
 
-    pub has_community_visible_stats: Option<bool>
+    pub has_community_visible_stats: Option<bool>,
 }
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct OwnedGames {
     pub game_count: u32,
-    pub games: Vec<OwnedGame>
+    pub games: Vec<OwnedGame>,
 }
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct GetOwnedGamesResponse {
-    response: OwnedGames
+    response: OwnedGames,
 }
 
 impl Steam {
-    pub async fn get_owned_games(&self, steam_id: u64, include_app_info: bool, include_played_free_games: bool) -> Result<OwnedGames> {
-        let query = format!("?key={}&steamid={}&include_appinfo={}&include_played_free_games={}",
-         &self.api_key, steam_id, include_app_info, include_played_free_games);
+    pub async fn get_owned_games(
+        &self,
+        steam_id: u64,
+        include_app_info: bool,
+        include_played_free_games: bool,
+    ) -> Result<OwnedGames> {
+        let query = format!(
+            "?key={}&steamid={}&include_appinfo={}&include_played_free_games={}",
+            &self.api_key, steam_id, include_app_info, include_played_free_games
+        );
         let url = format!(
             "{}/{}/{}/{}/{}",
             BASE_URL, IPLAYER_SERVICE, GET_OWNED_GAMES, VERSION_V1, query
@@ -70,3 +76,4 @@ impl Steam {
         }
     }
 }
+

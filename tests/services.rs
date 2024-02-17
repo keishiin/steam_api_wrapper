@@ -43,3 +43,17 @@ async fn get_owned_games() {
     assert_eq!(232, response.game_count)
 }
 
+#[tokio::test]
+async fn get_player_achievements() {
+    dotenv().ok();
+    let steam_api_key = std::env::var("STEAM_API_KEY").expect("expected a api key for steam");
+    let steam = Steam::new(steam_api_key.as_str());
+    let response = steam
+        .get_player_achievements(76561198163350464, 1245620)
+        .await
+        .unwrap();
+
+    println!("{:?}", response);
+
+    assert_eq!("ELDEN RING", response.game_name)
+}
