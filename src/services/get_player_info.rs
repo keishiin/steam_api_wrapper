@@ -1,9 +1,9 @@
-use anyhow::{anyhow, Result};
+use anyhow::Result;
 use serde::{Deserialize, Serialize};
-use serde_json::{from_value, Value};
 
 use crate::{
     generics::{BASE_URL, GET_PLAYER_SUMMARIES, ISTEAM_USER, VERSION_V2},
+    helpers::make_api_call::{api_call, FunctionResult},
     Steam,
 };
 
@@ -91,25 +91,10 @@ impl Steam {
             "{}/{}/{}/{}/{}",
             BASE_URL, ISTEAM_USER, GET_PLAYER_SUMMARIES, VERSION_V2, query
         );
-
-        let resp = reqwest::get(url).await?;
-
-        match resp.status() {
-            reqwest::StatusCode::OK => {
-                let json_response: Value = resp.json().await?;
-                println!("{:?}", json_response);
-                let response: PlayerResponse = match from_value(json_response.to_owned()) {
-                    Ok(res) => res,
-                    Err(err) => {
-                        return Err(anyhow!(
-                            "Failed to parse response into PlayerResponse: {}",
-                            err
-                        ));
-                    }
-                };
-                Ok(response.response.players)
-            }
-            status_code => Err(anyhow!("Expected 200 Status, got {}", status_code)),
+        // Call the api_call function
+        match api_call::<PlayerResponse>(url.clone()).await {
+            FunctionResult::Success(response) => Ok(response.response.players),
+            FunctionResult::Error(err) => Err(err),
         }
     }
 }

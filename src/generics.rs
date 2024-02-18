@@ -19,6 +19,5 @@ pub const ISTEAM_USER_STATS: &str = "ISteamUserStats";
 pub const GET_PLAYER_SUMMARIES: &str = "GetPlayerSummaries";
 pub const GET_RECENTLY_PLAYED_GAMES: &str = "GetRecentlyPlayedGames";
 pub const GET_OWNED_GAMES: &str = "GetOwnedGames";
-pub const GET_NUMBER_OF_CURRENT_PLAYERS: &str = "GetNumberOfCurrentPlayers";
+pub const _GET_NUMBER_OF_CURRENT_PLAYERS: &str = "GetNumberOfCurrentPlayers";
 pub const GET_PLAYER_ACHIEVEMTS: &str = "GetPlayerAchievements";
-

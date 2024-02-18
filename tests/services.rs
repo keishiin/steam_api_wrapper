@@ -40,7 +40,7 @@ async fn get_owned_games() {
 
     println!("{:?}", response);
 
-    assert_eq!(232, response.game_count)
+    assert_eq!(233, response.game_count)
 }
 
 #[tokio::test]

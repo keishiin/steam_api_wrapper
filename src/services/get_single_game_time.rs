@@ -5,4 +5,3 @@ need:
     request -> structure
     response -> structure
 */
-
