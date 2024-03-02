@@ -1,7 +1,14 @@
 [package]
-name = "steam_wrapper"
+name = "steam_api_wrapper"
 version = "0.1.0"
 edition = "2021"
+authors = ["Ghulam Afzal"]
+homepage = "https://github.com/keishiin/steam_api_wrapper"
+repository = "https://github.com/keishiin/steam_api_wrapper"
+license = "MIT"
+license-file = "LICENSE"
+
+description = "A api wrapper for steam"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
