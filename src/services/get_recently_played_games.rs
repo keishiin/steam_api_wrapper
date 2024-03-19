@@ -47,7 +47,7 @@ impl Steam {
         );
 
         // Call the api_call function
-        match api_call::<RecentlyPlayedSummary>(url.clone()).await {
+        match api_call::<RecentlyPlayedSummary>(url).await {
             FunctionResult::Success(response) => Ok(response.response),
             FunctionResult::Error(err) => Err(err),
         }

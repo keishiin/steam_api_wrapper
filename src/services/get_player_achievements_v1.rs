@@ -9,7 +9,7 @@ use anyhow::Result;
 use serde::{Deserialize, Serialize};
 
 use crate::{
-    generics::{BASE_URL, GET_PLAYER_ACHIEVEMTS, ISTEAM_USER_STATS, VERSION_V1},
+    generics::{BASE_URL, GET_PLAYER_ACHIEVEMENTS, ISTEAM_USER_STATS, VERSION_V1},
     helpers::make_api_call::{api_call, FunctionResult},
     Steam,
 };
@@ -60,11 +60,11 @@ impl Steam {
         );
         let url = format!(
             "{}/{}/{}/{}/{}",
-            BASE_URL, ISTEAM_USER_STATS, GET_PLAYER_ACHIEVEMTS, VERSION_V1, query
+            BASE_URL, ISTEAM_USER_STATS, GET_PLAYER_ACHIEVEMENTS, VERSION_V1, query
         );
 
         // Call the api_call function
-        match api_call::<PlayerStats>(url.clone()).await {
+        match api_call::<PlayerStats>(url).await {
             FunctionResult::Success(response) => Ok(response.player_stats),
             FunctionResult::Error(err) => Err(err),
         }

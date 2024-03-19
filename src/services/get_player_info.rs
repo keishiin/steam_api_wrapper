@@ -92,7 +92,7 @@ impl Steam {
             BASE_URL, ISTEAM_USER, GET_PLAYER_SUMMARIES, VERSION_V2, query
         );
         // Call the api_call function
-        match api_call::<PlayerResponse>(url.clone()).await {
+        match api_call::<PlayerResponse>(url).await {
             FunctionResult::Success(response) => Ok(response.response.players),
             FunctionResult::Error(err) => Err(err),
         }

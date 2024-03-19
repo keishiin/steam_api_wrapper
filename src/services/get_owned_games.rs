@@ -56,7 +56,7 @@ impl Steam {
         );
 
         // Call the api_call function
-        match api_call::<GetOwnedGamesResponse>(url.clone()).await {
+        match api_call::<GetOwnedGamesResponse>(url).await {
             FunctionResult::Success(response) => Ok(response.response),
             FunctionResult::Error(err) => Err(err),
         }
