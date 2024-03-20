@@ -32,12 +32,12 @@ pub struct Achievements {
 #[derive(Serialize, Debug, Deserialize, Clone)]
 pub struct PlayerAchievementInfo {
     #[serde(rename = "gameName")]
-    pub game_name: String,
+    pub game_name: Option<String>,
 
     #[serde(rename = "steamID")]
-    pub steam_id: String,
+    pub steam_id: Option<String>,
 
-    pub achievements: Vec<Achievements>,
+    pub achievements: Option<Vec<Achievements>>,
 
     pub success: bool,
 }

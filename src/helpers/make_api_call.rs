@@ -52,4 +52,3 @@ pub async fn api_call<T: DeserializeOwned>(url: String) -> FunctionResult<T> {
         status_code => FunctionResult::Error(anyhow!("An error occurred: {}", status_code)),
     }
 }
-
