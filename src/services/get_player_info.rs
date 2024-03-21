@@ -75,12 +75,12 @@ pub struct Player {
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Players {
-    players: Vec<Player>,
+    pub players: Vec<Player>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct PlayerResponse {
-    response: Players,
+    pub response: Players,
 }
 
 impl Steam {
@@ -90,7 +90,7 @@ impl Steam {
             "{}/{}/{}/{}/{}",
             BASE_URL, ISTEAM_USER, GET_PLAYER_SUMMARIES, VERSION_V2, query
         );
-        // Call the api_call function
+
         match api_call::<PlayerResponse>(url).await {
             FunctionResult::Success(response) => Ok(response.response.players),
             FunctionResult::Error(err) => Err(err),

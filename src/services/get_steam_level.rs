@@ -11,9 +11,9 @@ pub struct SteamPlayerLevel {
     pub player_level: u16,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct SteamPlayerLevelRespone {
-    response: SteamPlayerLevel,
+    pub response: SteamPlayerLevel,
 }
 
 impl Steam {

@@ -13,10 +13,9 @@ description = "A api wrapper for steam"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-reqwest = { version = "0.11.22", features = ["json"] }
+reqwest = { version = "0.12.0", features = ["json"] }
 serde = { version = "1.0.192", features = ["derive"] }
 serde_json = "1.0.108"
 tokio  = { version = "1.33.0", features = ["full"] }
 anyhow = "1.0.79"
 dotenv = "0.15.0"
-mockito = "1.4.0"

@@ -47,7 +47,7 @@ pub struct PlayerAchievementInfo {
 #[derive(Debug, Deserialize, Serialize)]
 pub struct PlayerStats {
     #[serde(rename = "playerstats")]
-    player_stats: PlayerAchievementInfo,
+    pub player_stats: PlayerAchievementInfo,
 }
 
 impl Steam {
