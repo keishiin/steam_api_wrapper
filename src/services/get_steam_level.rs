@@ -6,12 +6,12 @@ use crate::{
 use anyhow::Error;
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct SteamPlayerLevel {
     pub player_level: u16,
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Deserialize, Serialize)]
 pub struct SteamPlayerLevelRespone {
     response: SteamPlayerLevel,
 }

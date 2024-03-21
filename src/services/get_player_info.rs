@@ -7,8 +7,7 @@ use crate::{
     Steam,
 };
 
-// player profile object returned by api
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Player {
     #[serde(rename = "steamid")]
     pub steam_id: String,

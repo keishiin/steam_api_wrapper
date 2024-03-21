@@ -7,7 +7,7 @@ use crate::{
     Steam,
 };
 
-#[derive(Debug, Deserialize, Serialize, Clone)]
+#[derive(Deserialize, Serialize)]
 pub struct OwnedGame {
     #[serde(rename = "appid")]
     pub app_id: u64,
@@ -28,13 +28,13 @@ pub struct OwnedGame {
     pub has_community_visible_stats: Option<bool>,
 }
 
-#[derive(Debug, Deserialize, Serialize, Clone)]
+#[derive(Deserialize, Serialize)]
 pub struct OwnedGames {
     pub game_count: u32,
     pub games: Vec<OwnedGame>,
 }
 
-#[derive(Debug, Deserialize, Serialize, Clone)]
+#[derive(Deserialize, Serialize)]
 pub struct GetOwnedGamesResponse {
     response: OwnedGames,
 }

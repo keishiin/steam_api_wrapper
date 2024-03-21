@@ -20,7 +20,6 @@ pub async fn api_call<T: DeserializeOwned>(url: String) -> FunctionResult<T> {
                 Ok(json) => json,
                 Err(err) => return FunctionResult::Error(err.into()),
             };
-            println!("{:?}", json_response);
 
             match serde_json::from_value(json_response.to_owned()) {
                 Ok(response) => FunctionResult::Success(response),
