@@ -1,6 +1,6 @@
 [package]
 name = "steam_api_wrapper"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["Ghulam Afzal"]
 homepage = "https://github.com/keishiin/steam_api_wrapper"
