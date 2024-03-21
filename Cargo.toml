@@ -6,7 +6,6 @@ authors = ["Ghulam Afzal"]
 homepage = "https://github.com/keishiin/steam_api_wrapper"
 repository = "https://github.com/keishiin/steam_api_wrapper"
 license = "MIT"
-license-file = "LICENSE"
 
 description = "A api wrapper for steam"
 
