@@ -7,7 +7,7 @@ use crate::{
     Steam,
 };
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Achievement {
     #[serde(rename = "name")]
     pub achievement_name: String,
@@ -21,12 +21,12 @@ pub struct Achievement {
     pub icongray: String,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct AvailableGameStats {
     pub achievements: Vec<Achievement>,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Game {
     #[serde(rename = "gameName")]
     pub game_name: String,
@@ -36,7 +36,7 @@ pub struct Game {
     pub available_game_stats: AvailableGameStats,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Root {
     pub game: Game,
 }

@@ -14,7 +14,7 @@ use crate::{
     Steam,
 };
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Achievements {
     #[serde(rename = "apiname")]
     pub api_name: String,
@@ -29,7 +29,7 @@ pub struct Achievements {
     pub unlock_time: Option<u64>,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct PlayerAchievementInfo {
     #[serde(rename = "gameName")]
     pub game_name: Option<String>,
@@ -44,7 +44,7 @@ pub struct PlayerAchievementInfo {
     pub error: Option<String>,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct PlayerStats {
     #[serde(rename = "playerstats")]
     pub player_stats: PlayerAchievementInfo,

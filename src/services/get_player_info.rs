@@ -7,7 +7,7 @@ use crate::{
     Steam,
 };
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Player {
     #[serde(rename = "steamid")]
     pub steam_id: String,

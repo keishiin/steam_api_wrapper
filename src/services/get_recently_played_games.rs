@@ -8,7 +8,7 @@ use crate::{
     Steam,
 };
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Game {
     #[serde(rename = "appid")]
     pub app_id: u64,
@@ -27,13 +27,13 @@ pub struct Game {
     pub img_logo_url: Option<String>,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Games {
     pub total_count: u64,
     pub games: Vec<Game>,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct RecentlyPlayedSummary {
     pub response: Games,
 }
