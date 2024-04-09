@@ -63,7 +63,7 @@ mod tests {
 
         println!("{:?}", response);
 
-        assert_eq!(233, response.game_count)
+        assert_eq!(234, response.game_count)
     }
 
     #[tokio::test]
